@@ -1,0 +1,38 @@
+.center{
+	padding: 15px;
+}
+.margem{
+	padding-top: 50px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+#bottom {
+  padding-top: 130px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+#table{
+	width:55%;
+}
+.background{
+	background: url('/img/back.jpg') no-repeat;
+	width:100%;
+	background-size: cover;
+}
+.home-text{
+	padding-top: 130px;
+	width:100%;
+}
+.img-format{
+	background-size: auto;
+}
