@@ -43,7 +43,7 @@
 								<td th:text="${jogo.nome}"></td>
 								<td th:text="${jogo.plat.tipo}"></td>
 								<td th:text="${jogo.qtd}"></td>
-								<td><a>comprar</a></td>
+								<td><a th:href="@{/pesquisar/{gamecodigo}(gamecodigo=${jogo.codigo})}">comprar</a></td>
 							</tr>
 						</tbody>
 					</table>

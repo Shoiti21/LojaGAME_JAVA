@@ -1,9 +1,11 @@
 package br.com.loja.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,6 +41,13 @@ public class siteController {
 		}
 		ModelAndView mv=new ModelAndView("pesquisa");
 		mv.addObject("list_jogos", todosGames);
+		return mv;
+	}
+	@RequestMapping("/pesquisar/{codigo}")
+	public ModelAndView compra(@PathVariable Long codigo) {
+		Optional<game> jogo=games.findById(codigo);
+		ModelAndView mv=new ModelAndView("pesquisa");
+		mv.addObject(jogo.get());
 		return mv;
 	}
 }
