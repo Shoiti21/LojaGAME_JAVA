@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorator="LayoutPadrao">
+	<head>
+		<title>Novo Jogo</title>
+	</head>
+	<section layout:fragment="conteudo">
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<form class="form-horizontal" method="POST" action="/pesquisar" th:object=${game}>
+					<input type="hidden" th:field="*{codigo}">
+					<div class="form-group">
+						<label for="formGroupExampleInput">Nome</label>
+						<input type="text" class="form-control" th:field="*{nome}">
+					</div>
+					<div class="form-group">
+						<label for="formGroupExampleInput2">Plataforma</label>
+						<div>
+							<select class="form-group"  name="plat" th:field="*{plat}">
+								<option value="VAZIO">-</option>
+								<option value="PLAYSTATION_4">Playstation 4</option>
+								<option value="XBOX_ONE">XBOX One</option>
+								<option value="PC">PC</option>
+								<option value="MAC">Mac</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="formGroupExampleInput">Estoque</label>
+						<input type="text" class="form-control" th:field="*{qtd}">
+					</div>
+					<div class="form-group">
+						<div>
+							<button type="submit">Salvar</button>
+						</div>
+					</div>
+				</form>   
+			</div>  
+		</div>
+	</section>
+</html>
