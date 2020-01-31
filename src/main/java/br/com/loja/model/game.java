@@ -13,6 +13,7 @@ public class game {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nome;
+	private double preco;
 	@Enumerated(EnumType.STRING)
 	private Plataforma plat;
 	private int qtd;
@@ -40,5 +41,11 @@ public class game {
 	}
 	public void setQtd(int qtd) {
 		this.qtd = qtd;
+	}
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 }

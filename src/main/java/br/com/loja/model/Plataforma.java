@@ -7,7 +7,7 @@ public enum Plataforma {
 	XBOX_ONE("XBOX One"),
 	MAC("Mac");
 	
-	String tipo;
+	private String tipo;
 	
 	Plataforma(String tipo) {
 		this.tipo=tipo;

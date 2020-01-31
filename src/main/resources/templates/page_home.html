@@ -8,14 +8,14 @@
 	<section layout:fragment="conteudo">
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
-				<form class="form-horizontal" method="POST" action="/listajogo">
+				<form class="form-horizontal" action="/listajogo" th:object="${filtro}">
 					<div class="form-group">
 						<label for="formGroupExampleInput">Nome</label>
-						<input type="text" class="form-control" name="nome">
+						<input type="text" class="form-control" th:field="*{nome}">
 					</div>
 					<div class="form-group">
 						<label for="formGroupExampleInput2">Plataforma</label>
-						<select class="form-group"  name="plat">
+						<select class="form-group"  th:field="*{plat}">
 							<option value="VAZIO">-</option>
 							<option value="PLAYSTATION_4">Playstation 4</option>
 							<option value="XBOX_ONE">XBOX One</option>

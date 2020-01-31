@@ -6,14 +6,14 @@
 	</head>
 	<section layout:fragment="conteudo">
 		<div class="container">
-			<form class="form-horizontal" method="POST" action="/listajogo">
+			<form class="form-horizontal" action="/listajogo" th:object="${filtro}">
 				<div class="form-group">
 					<label for="formGroupExampleInput">Nome</label>
-					<input type="text" class="form-control" name="nome">
+					<input type="text" class="form-control" th:field="*{nome}">
 				</div>
 				<div class="form-group">
 					<label for="formGroupExampleInput2">Plataforma</label>
-					<select class="form-group"  name="plat">
+					<select class="form-group"  th:field="*{plat}">
 						<option value="VAZIO">-</option>
 						<option value="PLAYSTATION_4">Playstation 4</option>
 						<option value="XBOX_ONE">XBOX One</option>
@@ -34,31 +34,27 @@
 					<thead class="text-muted">
 						<tr>
 							<th scope="col">Produto</th>
-							<th scope="col" width="120">Plataforma</th>
-							<th scope="col" width="200">Estoque</th>
+							<th scope="col" width="120" style="text-align: center;">Plataforma</th>
+							<th scope="col" width="200" style="text-align: center;">Estoque</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="jogo : ${list_jogos}">
 							<td>
 								<figure class="media">
-									<div class="img-wrap"><img src="http://bootstrap-ecommerce.com/main/images/items/2.jpg" class="img-thumbnail img-sm"></div>
-									<figcaption class="media-body">
+									<div class="img-wrap"><img style="max-width:30%" th:src="@{${'/img/capas/list' + jogo.nome + '_' + jogo.plat + '.png'}}"  class="img-thumbnail"></div>
+									<figcaption >
 										<h6 class="title text-truncate" th:text="${jogo.nome}"></h6>
 										<dl class="param param-inline small">
 									  		<dt>Preço: </dt>
-									  		<dd></dd>
+									  		<dd th:text="${'R$ '+jogo.preco}"></dd>
 										</dl>
 									</figcaption>
 								</figure> 
 							</td>
-							<td> 
-								<!-- <p th:text="${jogo.plat.tipo}"></p>-->
-							</td>
-							<td>
-								<p th:text="${jogo.qtd}"></p>
-							</td>
-							<td class="text-right">  
+							<td th:text="${jogo.plat.tipo}" style="text-align: center; vertical-align: middle;"></td>
+							<td th:text="${jogo.qtd}" style="text-align: center; vertical-align: middle;"></td>
+							<td class="text-right" style="text-align: center; vertical-align: middle;">  
 								<a th:href="@{/compra/{gamecodigo}(gamecodigo=${jogo.codigo})}" class="btn btn-success">Comprar</a>
 							</td>
 						</tr>
@@ -67,35 +63,5 @@
 			</div>
 		</div>
 
-
-	<!-- 
-		<div class="container-sm">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			    	<h1 class="panel-title">Pesquisa</h1>
-			    </div>
-			    <div class="panel-body">
-				    <table class="table table-bordered table-sm table-hover">
-						<thead>
-							<tr>
-							    <th>Nome</th>
-							    <th>Plataforma</th>
-							    <th>Estoque</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="jogo : ${list_jogos}">
-								<td th:text="${jogo.nome}"></td>
-								<td th:text="${jogo.plat.tipo}"></td>
-								<td th:text="${jogo.qtd}"></td>
-								<td><a th:href="@{/compra/{gamecodigo}(gamecodigo=${jogo.codigo})}">comprar</a></td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
-		</div>
-	-->
 	</section>
 </html>

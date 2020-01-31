@@ -8,55 +8,60 @@
 	<section layout:fragment="conteudo">
 		<div class="container">
 			<div class="card">
-				<table class="table table-hover">
-					<thead class="text-muted">
-						<tr>
-							<th scope="col">Produto</th>
-							<th scope="col" width="120">Quantidade</th>
-							<th scope="col" width="120">Preço</th>
-							<th scope="col" width="200"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="listcarrinho : ${cart}">
-							<td>
-								<figure class="media">
-									<div class="img-wrap"><img src="http://bootstrap-ecommerce.com/main/images/items/2.jpg" class="img-thumbnail img-sm"></div>
-									<figcaption class="media-body">
-										<h6 class="title text-truncate" th:text="${listcarrinho.nome}"></h6>
-										<dl class="param param-inline small">
-									  		<dt>Plataforma: </dt>
-									  		<dd th:text="${listcarrinho.plat.tipo}"></dd>
-										</dl>
-									</figcaption>
-								</figure> 
-							</td>
-							<td> 
-								<select class="form-control">
-									<option>1</option>
-									<option>2</option>	
-									<option>3</option>	
-									<option>4</option>	
-									<option>5</option>	
-									<option>6</option>	
-									<option>7</option>
-									<option>8</option>	
-									<option>9</option>	
-									<option>10</option>
-								</select> 
-							</td>
-							<td> 
-								<div class="price-wrap"> 
-									<var class="price">USD 145</var> 
-									<small class="text-muted">(USD5 each)</small> 
-								</div> <!-- price-wrap .// -->
-							</td>
-							<td class="text-right">  
-								<a href="" class="btn btn-outline-danger"> × Remover</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<form action="/finalizar">
+					<table class="table table-hover">
+						<thead class="text-muted">
+							<tr>
+								<th scope="col">Produto</th>
+								<th scope="col" width="120">Quantidade</th>
+								<th scope="col" width="120">Preço</th>
+								<th scope="col" width="200"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="listcarrinho : ${cart}">
+								<td style="vertical-align: middle;">
+									<figure class="media">
+										<div class="img-wrap"><img th:src="@{${'/img/capas/list' + listcarrinho.nome + '_' + listcarrinho.plat + '.png'}}" class="img-thumbnail img-sm" style="max-width:30%"></div>
+										<figcaption class="media-body">
+											<h6 class="title text-truncate" th:text="${listcarrinho.nome}"></h6>
+											<dl class="param param-inline small">
+										  		<dt>Plataforma: </dt>
+										  		<dd th:text="${listcarrinho.plat.tipo}"></dd>
+											</dl>
+										</figcaption>
+									</figure> 
+								</td>
+								<td style="text-align: center; vertical-align: middle;"> 
+									<select class="form-control" name="jogoQtd">
+										<option value=1>1</option>
+										<option value=2>2</option>	
+										<option value=3>3</option>	
+										<option value=4>4</option>	
+										<option value=5>5</option>	
+										<option value=6>6</option>	
+										<option value=7>7</option>
+										<option value=8>8</option>	
+										<option value=9>9</option>	
+										<option value=10>10</option>
+									</select> 
+								</td>
+								<td style="text-align: center; vertical-align: middle;"> 
+									<div class="price-wrap"> 
+										<var class="price" th:text="${'R$ '+listcarrinho.preco}"></var> 
+										<small class="text-muted">(por unidade)</small> 
+									</div> <!-- price-wrap .// -->
+								</td>
+								<td class="text-right" style="text-align: center; vertical-align: middle;">  
+									<a href="" class="btn btn-outline-danger"> × Remover</a>
+								</td>
+							</tr>
+							<tr>
+								<td><button type="submit" class="btn btn-success">FINALIZAR</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 		<!-- <div class="container-sm">
